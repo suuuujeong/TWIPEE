@@ -1,15 +1,12 @@
 package com.nslb.twipee;
 
 import android.accounts.Account;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.Scopes;
@@ -19,17 +16,21 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
+import org.jetbrains.annotations.Nullable;
+
 public class Login extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
-    private GoogleApiClient mGoogleApiClient;
+    public GoogleApiClient mGoogleApiClient = null;
     private static final int RC_SIGN_IN = 9001;
     private SignInButton sign_in_button;
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        context = this;
 
         sign_in_button  = (SignInButton)findViewById(R.id.sign_in_button);
 
@@ -39,6 +40,12 @@ public class Login extends AppCompatActivity implements GoogleApiClient.Connecti
                 .addApi(Plus.API)
                 .addScope(new Scope(Scopes.PROFILE))
                 .build();
+
+//        if (mGoogleApiClient != null){
+//            Intent intent2 = new Intent(this,MainActivity.class);
+//            startActivity(intent2);
+//            finish();
+//        }
 
         sign_in_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,9 +67,11 @@ public class Login extends AppCompatActivity implements GoogleApiClient.Connecti
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             mGoogleApiClient.connect();
-            Intent intent = new Intent(this,MainActivity.class);
-            startActivity(intent);
-            finish();
+            if (mGoogleApiClient.isConnecting()) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
     }
 
@@ -73,7 +82,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.Connecti
     }
 
     @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    public void onConnectionFailed(@Nullable ConnectionResult connectionResult) {
 
         if (connectionResult.hasResolution()) {
             try {

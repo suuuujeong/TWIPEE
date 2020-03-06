@@ -3,10 +3,20 @@ package com.nslb.twipee;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.Scopes;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.plus.Plus;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.OAuthProvider;
 import com.nslb.twipee.ui.main.SectionsPagerAdapter;
 
 import java.util.ArrayList;
@@ -23,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button logout;
     private Intent intent;
+    public GoogleApiClient mgoogleApiClient = ((Login)Login.context).mGoogleApiClient;
 
     public String[] mUserInfos;
     public ArrayList<String> mKeywordStrArray;
@@ -66,10 +78,23 @@ public class MainActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(getApplicationContext(),Login.class);
+                mgoogleApiClient.disconnect();
+                Intent intent2 = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent2);
                 finish();
             }
         });
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
