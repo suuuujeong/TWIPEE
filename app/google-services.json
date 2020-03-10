@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "970657519954",
+    "firebase_url": "https://twipee-9695b.firebaseio.com",
+    "project_id": "twipee-9695b",
+    "storage_bucket": "twipee-9695b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970657519954:android:c81714b894ab0347af428b",
+        "android_client_info": {
+          "package_name": "com.nslb.twipee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970657519954-03a4rbdh7gisrjibf1okfqbdhp8esdq2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nslb.twipee",
+            "certificate_hash": "4fc1acc7e6095196cf469e6e3f436ebeac1a8c09"
+          }
+        },
+        {
+          "client_id": "970657519954-97d0g9ap4hvrf7u7ljptsf2m0pvkuuvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nslb.twipee",
+            "certificate_hash": "87bde53a0980fe15c0406bc96e5c0697f7d496b0"
+          }
+        },
+        {
+          "client_id": "970657519954-u7tj893epsr1eo1g6mnh96e08598d74f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDINxQYNtY6HFgCk3-W7xpsRul487xixdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970657519954-u7tj893epsr1eo1g6mnh96e08598d74f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

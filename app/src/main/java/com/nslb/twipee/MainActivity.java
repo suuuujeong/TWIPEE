@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button logout;
     private Intent intent;
-    public GoogleApiClient mgoogleApiClient = ((Login)Login.context).mGoogleApiClient;
 
     public String[] mUserInfos;
     public ArrayList<String> mKeywordStrArray;
@@ -78,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mgoogleApiClient.disconnect();
                 Intent intent2 = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent2);
                 finish();
